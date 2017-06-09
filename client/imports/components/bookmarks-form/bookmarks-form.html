@@ -1,0 +1,16 @@
+<h3>Add Bookmark</h3>
+<form [formGroup]="bookmarksForm" (ngSubmit)="addBookmark(bookmarksForm.value)"><!-- Without a parent FormGroup, [formControl]="name" worked earlier because that directive can stand alone, that is, it works without being in a FormGroup. With a parent FormGroup, the name input needs the syntax formControlName=name in order to be associated with the correct FormControl in the class. This syntax tells Angular to look for the parent FormGroup, in this case heroForm, and then inside that group to look for a FormControl called name.-->
+    <div class="form-group"> <!-- isregard the form-group CSS class. It belongs to the Bootstrap CSS library, not Angular. Like the form-control class, it styles the form but in no way impacts its logic.-->
+        <label>Title</label>
+        <input type="text" class="form-control" formControlName="title">
+    </div>
+    <div class="form-group">
+        <label>URL</label>
+        <input type="text" class="form-control" formControlName="url">
+    </div>
+    <div class="form-group">
+        <label>Category</label>
+        <input type="text" class="form-control" formControlName="category">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

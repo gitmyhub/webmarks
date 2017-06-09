@@ -1,0 +1,29 @@
+<a href="/">Go Back</a>
+<header *ngIf="bookmark">
+    <h2>{{bookmark.title}}</h2>
+    <p><strong>URL: </strong>{{bookmark.url}}</p>
+    <p><strong>Category: </strong>{{bookmark.category}}</p>  
+    <br>
+    <a class="btn btn-default" href="{{bookmark.url}}" target="_blank">Visit Website</a>  
+</header>
+
+<hr>
+
+<div *ngIf = "isOwner">
+<h3>Update Bookmark</h3>
+<form (ngSubmit)="updateBookmark(bookmark)"><!-- Without a parent FormGroup, [formControl]="name" worked earlier because that directive can stand alone, that is, it works without being in a FormGroup. With a parent FormGroup, the name input needs the syntax formControlName=name in order to be associated with the correct FormControl in the class. This syntax tells Angular to look for the parent FormGroup, in this case heroForm, and then inside that group to look for a FormControl called name.-->
+    <div class="form-group"> <!-- isregard the form-group CSS class. It belongs to the Bootstrap CSS library, not Angular. Like the form-control class, it styles the form but in no way impacts its logic.-->
+        <label>Title</label>
+        <input type="text" class="form-control" [(ngModel)]="bookmark.title" name="title">
+    </div>
+    <div class="form-group">
+        <label>URL</label>
+        <input type="text" class="form-control" [(ngModel)]="bookmark.url" name="url">
+    </div>
+    <div class="form-group">
+        <label>Category</label>
+        <input type="text" class="form-control" [(ngModel)]="bookmark.category" name="category">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
